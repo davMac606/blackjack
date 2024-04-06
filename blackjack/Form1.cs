@@ -96,6 +96,8 @@ namespace blackjack
         int[] cartas = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         int score;
         int scoreEnemy;
+        int upperCards;
+        int lowerCards;
         string imgpath = "C:/Users/User/source/repos/blackjack/blackjack/images/";
         Random random = new Random();
         public Tela()
@@ -128,13 +130,25 @@ namespace blackjack
         public void hit()
         {
             pbCard.SizeMode = PictureBoxSizeMode.StretchImage;
-            int x = pnlCards.Controls.Count * 80;
+            foreach (Control card in pnlCards.Controls)
+            {
+                if (card.Location.Y == 360)
+                {
+                    upperCards++;
+                }
+                else
+                {
+                    lowerCards++;
+                }
+            }
+            int x = upperCards * 80;
             int y = 360;
             int carta = cartas[random.Next(0, cartas.Length)];
             if (score > 10 && carta == 1)
             {
                 carta = 11;
             }
+
             PictureBox pbNewCard = new PictureBox();
             pbNewCard.Location = new Point(x, y);
             pbNewCard.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -142,6 +156,7 @@ namespace blackjack
             pbNewCard.Height = 105;
 
             cardDef(carta, pbNewCard);
+
             score = score + carta;
             lblScore.Text = "Pontuação:" + score.ToString();
             pnlCards.Controls.Add(pbNewCard);
@@ -175,7 +190,17 @@ namespace blackjack
         public void enemyturn()
         {
             enemyStartingCards();
-            int x = pnlCards.Controls.Count * 80;
+            foreach (Control card in pnlCards.Controls)
+            {
+                if (card.Location.Y == 360)
+                {
+                    upperCards++;
+                } else
+                {
+                    lowerCards++;
+                }
+            }
+            int x = upperCards * 80;
             int y = 0;
             int cartaE3 = cartas[random.Next(0, cartas.Length)];
             if (score > 10 && cartaE3 == 1)
@@ -197,6 +222,14 @@ namespace blackjack
         private void btnHit_Click(object sender, EventArgs e)
         {
             hit();
+            if (score == 21)
+            {
+                MessageBox.Show("Você ganhou!");
+                Application.Exit();
+            } else if (score > 21){
+                MessageBox.Show("Você perdeu!");
+                Application.Exit();
+            }
         }
 
         private void btnStand_Click(object sender, EventArgs e)

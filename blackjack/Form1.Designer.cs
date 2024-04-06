@@ -36,14 +36,14 @@
             this.lblScore = new System.Windows.Forms.Label();
             this.pbCard2 = new System.Windows.Forms.PictureBox();
             this.pnlCards = new System.Windows.Forms.Panel();
-            this.pbCard3 = new System.Windows.Forms.PictureBox();
             this.pbCard4 = new System.Windows.Forms.PictureBox();
+            this.pbCard3 = new System.Windows.Forms.PictureBox();
             this.lblScoreE = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbCard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCard2)).BeginInit();
             this.pnlCards.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCard3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCard4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCard3)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -119,6 +119,16 @@
             this.pnlCards.Size = new System.Drawing.Size(785, 468);
             this.pnlCards.TabIndex = 8;
             // 
+            // pbCard4
+            // 
+            this.pbCard4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbCard4.BackgroundImage")));
+            this.pbCard4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbCard4.Location = new System.Drawing.Point(78, 0);
+            this.pbCard4.Name = "pbCard4";
+            this.pbCard4.Size = new System.Drawing.Size(69, 105);
+            this.pbCard4.TabIndex = 9;
+            this.pbCard4.TabStop = false;
+            // 
             // pbCard3
             // 
             this.pbCard3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbCard3.BackgroundImage")));
@@ -128,16 +138,6 @@
             this.pbCard3.Size = new System.Drawing.Size(69, 105);
             this.pbCard3.TabIndex = 8;
             this.pbCard3.TabStop = false;
-            // 
-            // pbCard4
-            // 
-            this.pbCard4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbCard4.BackgroundImage")));
-            this.pbCard4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbCard4.Location = new System.Drawing.Point(87, 3);
-            this.pbCard4.Name = "pbCard4";
-            this.pbCard4.Size = new System.Drawing.Size(69, 105);
-            this.pbCard4.TabIndex = 9;
-            this.pbCard4.TabStop = false;
             // 
             // lblScoreE
             // 
@@ -171,8 +171,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbCard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCard2)).EndInit();
             this.pnlCards.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbCard3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCard4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCard3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
