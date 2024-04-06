@@ -189,7 +189,6 @@ namespace blackjack
         }
         public void enemyturn()
         {
-            enemyStartingCards();
             foreach (Control card in pnlCards.Controls)
             {
                 if (card.Location.Y == 360)
@@ -215,8 +214,22 @@ namespace blackjack
 
             
             enemyCardDef(cartaE3, pbNewCardE);
+            MessageBox.Show(scoreEnemy.ToString());
+            if (scoreEnemy > 21)
+            {
+                MessageBox.Show("Você ganhou!");
+                Application.Exit();
+            } else if (scoreEnemy == 21)
+            {
+                MessageBox.Show("Você perdeu!");
+                Application.Exit();
+            } else if (scoreEnemy > score && scoreEnemy < 21)
+            {
+                MessageBox.Show("Você perdeu!");
+                Application.Exit();
+            }
             scoreEnemy += cartaE3;
-            lblScoreE.Text = "Pontuação:" + scoreEnemy.ToString();
+            
 
         }
         private void btnHit_Click(object sender, EventArgs e)
