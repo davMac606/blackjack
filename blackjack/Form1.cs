@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Media;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
@@ -14,6 +15,7 @@ namespace blackjack
 {
     public partial class Tela : Form
     {
+       
         private void enemyCardDef(int value, PictureBox pictureBox)
         {
             switch (value)
@@ -166,7 +168,7 @@ namespace blackjack
                 Application.Exit();
             }
         }
-        public int enemyStartingCards()
+        public void enemyturn()
         {
             int cartaE = cartas[random.Next(0, cartas.Length)];
             pbCard3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -174,6 +176,7 @@ namespace blackjack
             {
                 cartaE = 11;
             }
+            
             enemyCardDef(cartaE, pbCard3);
             scoreEnemy += cartaE;
             int cartaE2 = cartas[random.Next(0, cartas.Length)];
@@ -184,10 +187,7 @@ namespace blackjack
             }
             enemyCardDef(cartaE2, pbCard4);
             scoreEnemy += cartaE2;
-            return scoreEnemy;
-        }
-        public void enemyturn()
-        {
+
             int x = pnlCardsE.Controls.Count * 80;
             int y = 3;
             int cartaE3 = cartas[random.Next(0, cartas.Length)];
@@ -195,7 +195,9 @@ namespace blackjack
             {
                 cartaE3 = 11;
             }
+
             PictureBox pbNewCardE = new PictureBox();
+            pbNewCardE.Image = Image.FromFile(imgpath + "back.png");
             pbNewCardE.Location = new Point(x, y);
             pbNewCardE.SizeMode = PictureBoxSizeMode.StretchImage;
             pbNewCardE.Width = 69;

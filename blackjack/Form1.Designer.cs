@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tela));
             this.label1 = new System.Windows.Forms.Label();
             this.btnHit = new System.Windows.Forms.Button();
@@ -40,6 +41,7 @@
             this.lblScoreE = new System.Windows.Forms.Label();
             this.pbCard3 = new System.Windows.Forms.PictureBox();
             this.pnlCardsE = new System.Windows.Forms.Panel();
+            this.tmrDisplay = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbCard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCard2)).BeginInit();
             this.pnlCardsPl.SuspendLayout();
@@ -202,6 +204,7 @@
         private System.Windows.Forms.Label lblScoreE;
         private System.Windows.Forms.PictureBox pbCard3;
         private System.Windows.Forms.Panel pnlCardsE;
+        private System.Windows.Forms.Timer tmrDisplay;
     }
 }
 
