@@ -96,8 +96,6 @@ namespace blackjack
         int[] cartas = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         int score;
         int scoreEnemy;
-        int upperCards;
-        int lowerCards;
         string imgpath = "C:/Users/User/source/repos/blackjack/blackjack/images/";
         Random random = new Random();
         public Tela()
@@ -111,6 +109,8 @@ namespace blackjack
             int cartaini = cartas[random.Next(0, cartas.Length)];
             pbCard2.SizeMode = PictureBoxSizeMode.StretchImage;
             pbCard.SizeMode = PictureBoxSizeMode.StretchImage;
+            lblScoreE.Text = "Score: "; 
+            lblScore.Text = "Score: ";
             if ( score > 10 && cartaini == 1)
             {
                 cartaini = 11;
@@ -127,22 +127,12 @@ namespace blackjack
             score = score + cartaini2;
             lblScore.Text = score.ToString();
         }
+
         public void hit()
         {
             pbCard.SizeMode = PictureBoxSizeMode.StretchImage;
-            foreach (Control card in pnlCards.Controls)
-            {
-                if (card.Location.Y == 360)
-                {
-                    upperCards++;
-                }
-                else
-                {
-                    lowerCards++;
-                }
-            }
-            int x = upperCards * 80;
-            int y = 360;
+            int x = pnlCardsPl.Controls.Count * 80;
+            int y = 48;
             int carta = cartas[random.Next(0, cartas.Length)];
             if (score > 10 && carta == 1)
             {
@@ -157,9 +147,9 @@ namespace blackjack
 
             cardDef(carta, pbNewCard);
 
-            score = score + carta;
+            score += carta;
             lblScore.Text = "Pontuação:" + score.ToString();
-            pnlCards.Controls.Add(pbNewCard);
+            pnlCardsPl.Controls.Add(pbNewCard);
             
             if (score > 21)               
             {
@@ -189,18 +179,8 @@ namespace blackjack
         }
         public void enemyturn()
         {
-            foreach (Control card in pnlCards.Controls)
-            {
-                if (card.Location.Y == 360)
-                {
-                    upperCards++;
-                } else
-                {
-                    lowerCards++;
-                }
-            }
-            int x = upperCards * 80;
-            int y = 0;
+            int x = pnlCardsE.Controls.Count * 80;
+            int y = 3;
             int cartaE3 = cartas[random.Next(0, cartas.Length)];
             if (score > 10 && cartaE3 == 1)
             {
@@ -214,7 +194,6 @@ namespace blackjack
 
             
             enemyCardDef(cartaE3, pbNewCardE);
-            MessageBox.Show(scoreEnemy.ToString());
             if (scoreEnemy > 21)
             {
                 MessageBox.Show("Você ganhou!");
@@ -244,7 +223,7 @@ namespace blackjack
                 Application.Exit();
             }
         }
-
+        
         private void btnStand_Click(object sender, EventArgs e)
         {
             enemyturn();
