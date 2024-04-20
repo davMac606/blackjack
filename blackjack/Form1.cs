@@ -105,7 +105,7 @@ namespace blackjack
 
         private void Tela_Load(object sender, EventArgs e)
         {
-          
+           
             int cartaini = cartas[random.Next(0, cartas.Length)];
             pbCard2.SizeMode = PictureBoxSizeMode.StretchImage;
             pbCard.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -125,6 +125,15 @@ namespace blackjack
             }
             cardDef(cartaini2, pbCard2);
             score = score + cartaini2;
+            if (score > 21)
+            {
+                MessageBox.Show("Você perdeu!");
+                Application.Exit();
+            } else if (score == 21)
+            {
+                MessageBox.Show("Você ganhou!");
+                Application.Exit();
+            }
             lblScore.Text = score.ToString();
         }
 
