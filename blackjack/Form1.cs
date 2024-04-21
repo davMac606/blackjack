@@ -68,7 +68,9 @@ namespace blackjack
 
         private void Tela_Load(object sender, EventArgs e)
         {
-           
+            pbDeck1.BringToFront();
+            pbDeck2.SendToBack();
+            pbDeck3.SendToBack();
             int cartaini = cartas[random.Next(0, cartas.Length)];
             pbCard2.SizeMode = PictureBoxSizeMode.StretchImage;
             pbCard.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -77,9 +79,10 @@ namespace blackjack
             cardDef(cartaini, pbCard);
             score = score + cartaini;
             lblScore.Text = score.ToString();
+
             int cartaini2 = cartas[random.Next(0, cartas.Length)];
 
-            if (cartaini2 == 11 && score + cartaini2 > 21)
+            if (score + cartaini2 > 21)
             {
                 cartaini2 = 1;
             }
@@ -160,7 +163,7 @@ namespace blackjack
             pbNewCardE.SizeMode = PictureBoxSizeMode.StretchImage;
             pbNewCardE.Width = 69;
             pbNewCardE.Height = 105;
-
+            pnlCardsE.Controls.Add(pbNewCardE); 
             
             cardDef(cartaE3, pbNewCardE);
             scoreEnemy += cartaE3;

@@ -42,12 +42,18 @@
             this.pbCard3 = new System.Windows.Forms.PictureBox();
             this.pnlCardsE = new System.Windows.Forms.Panel();
             this.tmrDisplay = new System.Windows.Forms.Timer(this.components);
+            this.pbDeck1 = new System.Windows.Forms.PictureBox();
+            this.pbDeck2 = new System.Windows.Forms.PictureBox();
+            this.pbDeck3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbCard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCard2)).BeginInit();
             this.pnlCardsPl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCard4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCard3)).BeginInit();
             this.pnlCardsE.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDeck1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDeck2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDeck3)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -159,12 +165,45 @@
             this.pnlCardsE.Size = new System.Drawing.Size(798, 156);
             this.pnlCardsE.TabIndex = 10;
             // 
+            // pbDeck1
+            // 
+            this.pbDeck1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbDeck1.BackgroundImage")));
+            this.pbDeck1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbDeck1.Location = new System.Drawing.Point(35, 173);
+            this.pbDeck1.Name = "pbDeck1";
+            this.pbDeck1.Size = new System.Drawing.Size(69, 105);
+            this.pbDeck1.TabIndex = 10;
+            this.pbDeck1.TabStop = false;
+            // 
+            // pbDeck2
+            // 
+            this.pbDeck2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbDeck2.BackgroundImage")));
+            this.pbDeck2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbDeck2.Location = new System.Drawing.Point(26, 180);
+            this.pbDeck2.Name = "pbDeck2";
+            this.pbDeck2.Size = new System.Drawing.Size(69, 105);
+            this.pbDeck2.TabIndex = 11;
+            this.pbDeck2.TabStop = false;
+            // 
+            // pbDeck3
+            // 
+            this.pbDeck3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbDeck3.BackgroundImage")));
+            this.pbDeck3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbDeck3.Location = new System.Drawing.Point(21, 185);
+            this.pbDeck3.Name = "pbDeck3";
+            this.pbDeck3.Size = new System.Drawing.Size(69, 105);
+            this.pbDeck3.TabIndex = 12;
+            this.pbDeck3.TabStop = false;
+            // 
             // Tela
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1039, 492);
+            this.Controls.Add(this.pbDeck3);
+            this.Controls.Add(this.pbDeck2);
+            this.Controls.Add(this.pbDeck1);
             this.Controls.Add(this.pnlCardsE);
             this.Controls.Add(this.lblScoreE);
             this.Controls.Add(this.pnlCardsPl);
@@ -186,6 +225,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbCard4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCard3)).EndInit();
             this.pnlCardsE.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbDeck1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDeck2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDeck3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,6 +247,9 @@
         private System.Windows.Forms.PictureBox pbCard3;
         private System.Windows.Forms.Panel pnlCardsE;
         private System.Windows.Forms.Timer tmrDisplay;
+        private System.Windows.Forms.PictureBox pbDeck1;
+        private System.Windows.Forms.PictureBox pbDeck2;
+        private System.Windows.Forms.PictureBox pbDeck3;
     }
 }
 
