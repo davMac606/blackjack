@@ -215,6 +215,10 @@ namespace blackjack
             {
                 MessageBox.Show("Você perdeu!");
                 Application.Exit();
+            } else if (scoreEnemy == score)
+            {
+                MessageBox.Show("Empate!");
+                Application.Exit();
             }
         }
 
