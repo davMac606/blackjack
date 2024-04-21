@@ -15,50 +15,11 @@ namespace blackjack
 {
     public partial class Tela : Form
     {
-       
-        private void enemyCardDef(int value, PictureBox pictureBox)
-        {
-            switch (value)
-            {
-                case 1:
-                    pictureBox.Image = Image.FromFile(imgpath + "ace of spades.png");
-                    break;
-                case 2:
-                    pictureBox.Image = Image.FromFile(imgpath + "2 of spades.png");
-                    break;
-                case 3:
-                    pictureBox.Image = Image.FromFile(imgpath + "3 of spades.png");
-                    break;
-                case 4:
-                    pictureBox.Image = Image.FromFile(imgpath + "4 of spades.png");
-                    break;
-                case 5:
-                    pictureBox.Image = Image.FromFile(imgpath + "5 of spades.png");
-                    break;
-                case 6:
-                    pictureBox.Image = Image.FromFile(imgpath + "6 of spades.png");
-                    break;
-                case 7:
-                    pictureBox.Image = Image.FromFile(imgpath + "7 of spades.png");
-                    break;
-                case 8:
-                    pictureBox.Image = Image.FromFile(imgpath + "8 of spades.png");
-                    break;
-                case 9:
-                    pictureBox.Image = Image.FromFile(imgpath + "9 of spades.png");
-                    break;
-                case 10:
-                    pictureBox.Image = Image.FromFile(imgpath + "10 of spades.png");
-                    break;
-                case 11:
-                    pictureBox.Image = Image.FromFile(imgpath + "ace of spades.png");
-                    break;
-            }
-        }
         private void cardDef(int value, PictureBox pictureBox)
         {
             switch (value)
             {
+                
                 case 1:
                     pictureBox.Image = Image.FromFile(imgpath + "ace of spades.png");
                     break;
@@ -95,7 +56,7 @@ namespace blackjack
                     
             }
         }
-        int[] cartas = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        int[] cartas = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
         int score;
         int scoreEnemy;
         string imgpath = "C:/Users/User/source/repos/blackjack/blackjack/images/";
@@ -113,28 +74,25 @@ namespace blackjack
             pbCard.SizeMode = PictureBoxSizeMode.StretchImage;
             lblScoreE.Text = "Score: "; 
             lblScore.Text = "Score: ";
-            if ( score > 10 && cartaini == 1)
-            {
-                cartaini = 11;
-            }
             cardDef(cartaini, pbCard);
             score = score + cartaini;
             lblScore.Text = score.ToString();
             int cartaini2 = cartas[random.Next(0, cartas.Length)];
-            if (score >=10 && cartaini2 == 1)
+
+            if (cartaini2 == 11 && score + cartaini2 > 21)
             {
-                cartaini2 = 11;
+                cartaini2 = 1;
             }
+            
             cardDef(cartaini2, pbCard2);
             score = score + cartaini2;
-            if (score > 21)
-            {
-                MessageBox.Show("Você perdeu!");
-                Application.Exit();
-            } else if (score == 21)
+            if (score == 21)
             {
                 MessageBox.Show("Você ganhou!");
                 Application.Exit();
+            } else
+            {
+
             }
             lblScore.Text = score.ToString();
         }
@@ -145,11 +103,10 @@ namespace blackjack
             int x = pnlCardsPl.Controls.Count * 80;
             int y = 48;
             int carta = cartas[random.Next(0, cartas.Length)];
-            if (score > 10 && carta == 1)
+            if (carta == 11 && score + carta > 21)
             {
                 carta = 11;
             }
-
             PictureBox pbNewCard = new PictureBox();
             pbNewCard.Location = new Point(x, y);
             pbNewCard.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -176,18 +133,19 @@ namespace blackjack
             {
                 cartaE = 11;
             }
-            
-            enemyCardDef(cartaE, pbCard3);
+            cardDef(cartaE, pbCard3);
             scoreEnemy += cartaE;
+            MessageBox.Show("Pontuação do inimigo: " + scoreEnemy);
             int cartaE2 = cartas[random.Next(0, cartas.Length)];
             pbCard4.SizeMode = PictureBoxSizeMode.StretchImage;
             if (score > 10 && cartaE2 == 1)
             {
                 cartaE2 = 11;
             }
-            enemyCardDef(cartaE2, pbCard4);
+            cardDef(cartaE2, pbCard4);
             scoreEnemy += cartaE2;
 
+            MessageBox.Show("Pontuação do inimigo: " + scoreEnemy);
             int x = pnlCardsE.Controls.Count * 80;
             int y = 3;
             int cartaE3 = cartas[random.Next(0, cartas.Length)];
@@ -204,23 +162,24 @@ namespace blackjack
             pbNewCardE.Height = 105;
 
             
-            enemyCardDef(cartaE3, pbNewCardE);
-            if (scoreEnemy > 21)
-            {
-                MessageBox.Show("Você ganhou!");
-                Application.Exit();
-            } else if (scoreEnemy == 21)
-            {
+            cardDef(cartaE3, pbNewCardE);
+            scoreEnemy += cartaE3;
+            MessageBox.Show("Pontuação do inimigo: " + scoreEnemy);
+            if (scoreEnemy < 21 && scoreEnemy > score)
+            { 
                 MessageBox.Show("Você perdeu!");
                 Application.Exit();
-            } else if (scoreEnemy > score && scoreEnemy < 21)
+            }
+            else if (scoreEnemy == 21)
             {
                 MessageBox.Show("Você perdeu!");
                 Application.Exit();
             }
-            scoreEnemy += cartaE3;
-            
-
+            else if (scoreEnemy > 21)
+            {
+                MessageBox.Show("Você ganhou!");
+                Application.Exit();
+            }   
         }
         private void btnHit_Click(object sender, EventArgs e)
         {
@@ -238,25 +197,25 @@ namespace blackjack
         private void btnStand_Click(object sender, EventArgs e)
         {
             enemyturn();
-            while (scoreEnemy < 21)
+            while (scoreEnemy < 21 && scoreEnemy < score)
             {
-                int choice = random.Next(0, 2);
-                if (choice == 1)
-                {
-                    enemyturn();
-                }
+                enemyturn();
             }
-            if (scoreEnemy > score && scoreEnemy <= 21)
+            if (scoreEnemy == 21)
             {
                 MessageBox.Show("Você perdeu!");
                 Application.Exit();
             }
-            else
+            else if (scoreEnemy > 21)
             {
                 MessageBox.Show("Você ganhou!");
                 Application.Exit();
-            }   
-            
+            }
+            else if (scoreEnemy > score)
+            {
+                MessageBox.Show("Você perdeu!");
+                Application.Exit();
+            }
         }
 
         private void pbCard_Click(object sender, EventArgs e)
