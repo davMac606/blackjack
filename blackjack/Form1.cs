@@ -138,6 +138,7 @@ namespace blackjack
             }
             cardDef(cartaE, pbCard3);
             scoreEnemy += cartaE;
+            lblScoreE.Text = "Pontuação:" + scoreEnemy.ToString();
             MessageBox.Show("Pontuação do inimigo: " + scoreEnemy);
             int cartaE2 = cartas[random.Next(0, cartas.Length)];
             pbCard4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -147,7 +148,7 @@ namespace blackjack
             }
             cardDef(cartaE2, pbCard4);
             scoreEnemy += cartaE2;
-
+            lblScoreE.Text = "Pontuação:" + scoreEnemy.ToString();
             MessageBox.Show("Pontuação do inimigo: " + scoreEnemy);
             int x = pnlCardsE.Controls.Count * 80;
             int y = 3;
@@ -167,7 +168,7 @@ namespace blackjack
             
             cardDef(cartaE3, pbNewCardE);
             scoreEnemy += cartaE3;
-            MessageBox.Show("Pontuação do inimigo: " + scoreEnemy);
+            lblScoreE.Text = "Pontuação:" + scoreEnemy.ToString();
             if (scoreEnemy < 21 && scoreEnemy > score)
             { 
                 MessageBox.Show("Você perdeu!");
