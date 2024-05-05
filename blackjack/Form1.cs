@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Media;
 using System.Text;
@@ -15,43 +16,50 @@ namespace blackjack
 {
     public partial class Tela : Form
     {
+        private string GetImagePath(string imageName)
+        {
+            string currentDirectory = Directory.GetCurrentDirectory();
+            string projectRoot = Directory.GetParent(currentDirectory).Parent.FullName;
+            string imagePath = Path.Combine(projectRoot, "images", imageName);
+            return imagePath;
+        }
         private void cardDef(int value, PictureBox pictureBox)
         {
             switch (value)
             {
                 
                 case 1:
-                    pictureBox.Image = Image.FromFile(imgpath + "ace of spades.png");
+                    pictureBox.Image = Image.FromFile(GetImagePath("ace of spades.png"));
                     break;
                 case 2:
-                    pictureBox.Image = Image.FromFile(imgpath + "2 of spades.png");
+                    pictureBox.Image = Image.FromFile(GetImagePath("2 of spades.png"));
                     break;
                 case 3:
-                    pictureBox.Image = Image.FromFile(imgpath + "3 of spades.png");
+                    pictureBox.Image = Image.FromFile(GetImagePath("3 of spades.png"));
                     break;
                 case 4:
-                    pictureBox.Image = Image.FromFile(imgpath + "4 of spades.png");
+                    pictureBox.Image = Image.FromFile(GetImagePath("4 of spades.png"));
                     break;
                 case 5:
-                    pictureBox.Image = Image.FromFile(imgpath + "5 of spades.png");
+                    pictureBox.Image = Image.FromFile(GetImagePath("5 of spades.png"));
                     break;
                 case 6:
-                    pictureBox.Image = Image.FromFile(imgpath + "6 of spades.png");
+                    pictureBox.Image = Image.FromFile(GetImagePath("6 of spades.png"));
                     break;
                 case 7:
-                    pictureBox.Image = Image.FromFile(imgpath + "7 of spades.png");
+                    pictureBox.Image = Image.FromFile(GetImagePath("7 of spades.png"));
                     break;
                 case 8:
-                    pictureBox.Image = Image.FromFile(imgpath + "8 of spades.png");
+                    pictureBox.Image = Image.FromFile(GetImagePath("8 of spades.png"));
                     break;
                 case 9:
-                    pictureBox.Image = Image.FromFile(imgpath + "9 of spades.png");
+                    pictureBox.Image = Image.FromFile(GetImagePath("9 of spades.png"));
                     break;
                 case 10:
-                    pictureBox.Image = Image.FromFile(imgpath + "10 of spades.png");
+                    pictureBox.Image = Image.FromFile(GetImagePath("10 of spades.png"));
                     break;
                 case 11:
-                    pictureBox.Image = Image.FromFile(imgpath + "ace of spades.png");
+                    pictureBox.Image = Image.FromFile(GetImagePath("ace of spades.png"));
                     break;
                     
             }
@@ -59,7 +67,6 @@ namespace blackjack
         int[] cartas = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
         int score;
         int scoreEnemy;
-        string imgpath = "C:/Users/User/source/repos/blackjack/blackjack/images/";
         Random random = new Random();
         public Tela()
         {
@@ -135,7 +142,7 @@ namespace blackjack
             if (score > 10 && cartaE == 1)
             {
                 cartaE = 11;
-            }
+            }   
             cardDef(cartaE, pbCard3);
             scoreEnemy += cartaE;
             lblScoreE.Text = "Pontuação:" + scoreEnemy.ToString();
@@ -159,7 +166,7 @@ namespace blackjack
             }
 
             PictureBox pbNewCardE = new PictureBox();
-            pbNewCardE.Image = Image.FromFile(imgpath + "back.png");
+            pbNewCardE.Image = Image.FromFile(GetImagePath("back.png"));
             pbNewCardE.Location = new Point(x, y);
             pbNewCardE.SizeMode = PictureBoxSizeMode.StretchImage;
             pbNewCardE.Width = 69;
